@@ -387,7 +387,7 @@ With the container up, let's test out the endpoints...
 |---------------|-------------|-------------|---------------------------|
 | /movies/ping  | GET         | READ        | `pong`                    |
 | /movies/user  | GET         | READ        | get all movies by user    |
-| /movies       | POST        | CREATE      | add a single movie       |
+| /movies       | POST        | CREATE      | add a single movie        |
 
 Start with opening the browser to [http://localhost:3001/movies/ping](http://localhost:3001/movies/ping). You should see `pong`! Try [http://localhost:3001/movies/user](http://localhost:3001/movies/user):
 
@@ -465,10 +465,21 @@ Thus far we've only tested each individual microservice with unit and integratio
 
 Again, add a *Dockerfile* to "tests":
 
-```sh
+```
+FROM testcafe/testcafe:latest
 ```
 
+Now, we can run the tests:
+
+```sh
+$ docker-compose run tests firefox tests/**/*.js
+```
+
+> **NOTE:** Check out the [official docs](https://devexpress.github.io/testcafe/documentation/using-testcafe/installing-testcafe.html#using-testcafe-docker-image) for more info on using TestCafe with Docker.
+
 ## Swagger Setup
+
+
 
 
 ## Next Steps
